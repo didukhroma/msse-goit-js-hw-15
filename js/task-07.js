@@ -5,9 +5,14 @@
 // <span id="text">Abracadabra!</span>
 const controlRef = document.querySelector("#font-size-control");
 const spanRef = document.querySelector("#text");
+const baseFontSize = controlRef.value;
 
-const handleInput = ({ target }) => {
-  spanRef.style.fontSize = `${target.value}px`;
-};
+const changeFontSize = (fontSize) => (spanRef.style.fontSize = `${fontSize}px`);
+
+const handleInput = ({ target }) => changeFontSize(target.value);
+
+changeFontSize(baseFontSize);
 
 controlRef.addEventListener("input", handleInput);
+
+// Завданні 7 - при завантаженні сторінки потрібно в початковий фонтсайз спана поставити початкове значення інпута, щоб не було скачків розміру текста при пересуванні повзунка.
