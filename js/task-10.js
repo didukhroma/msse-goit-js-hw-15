@@ -38,9 +38,14 @@ const step = 10;
 let height = minHeight;
 let width = minWidth;
 
-const clearMarkup = () => (wrapperRef.innerHTML = "");
+const clearMarkup = () => {
+  wrapperRef.innerHTML = "";
+  height = minHeight;
+  width = minWidth;
+};
 
 const createBoxes = (amount) => {
+  clearMarkup();
   let markup = "";
   for (let i = 0; i < amount; i += 1) {
     const color = getRandomHexColor();
@@ -52,14 +57,10 @@ const createBoxes = (amount) => {
   wrapperRef.insertAdjacentHTML("beforeend", markup);
 };
 
-const destroyBoxes = () => {
-  clearMarkup();
-  height = minHeight;
-  width = minWidth;
-};
-
+const destroyBoxes = () => clearMarkup();
+// handlers
 const handleCreateClick = () => createBoxes(inputRef.value);
 const handleDestroyClick = () => destroyBoxes();
-
+// listeners
 createBtnRef.addEventListener("click", handleCreateClick);
 destroyBtnRef.addEventListener("click", handleDestroyClick);
