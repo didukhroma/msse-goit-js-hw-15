@@ -26,12 +26,12 @@
 } */
 }
 const inputRef = document.querySelector("#validation-input");
-const minLength = inputRef.getAttribute("data-length");
+const strLength = inputRef.getAttribute("data-length");
 const validClass = "valid";
 const invalidClass = "invalid";
 
 const handleBlur = ({ target }) => {
-  if (target.value.length >= minLength) {
+  if (target.value.length === Number(strLength)) {
     inputRef.classList.add(validClass);
     inputRef.classList.remove(invalidClass);
   } else {
